@@ -14,4 +14,4 @@ require_once MODELO_PATH. 'conexion.php';
 
 echo "Config file included successfully!";
 
-?>gi
+?>
