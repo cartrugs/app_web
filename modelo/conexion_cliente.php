@@ -3,7 +3,7 @@
 
 function conectarBD(){
     $host = 'localhost';
-    $dbname = 'agenda';
+    $dbname = 'app_web_certi';
     $username = 'root';
     $password = '';
 
