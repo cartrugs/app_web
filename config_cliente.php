@@ -10,7 +10,7 @@ define('VISTA_PATH', APP_ROOT . '/vista/');
 
 // archivo de conexión a la bbdd
 
-require_once MODELO_PATH. 'conexion.php';
+require_once MODELO_PATH. 'conexion_cliente.php';
 
 echo "Config file included successfully!";
 
