@@ -31,18 +31,18 @@
             <?php echo htmlspecialchars($error); ?>
         </div>
         <?php endif; ?>
-        <form action="../controlador/contacto_controlador.php" method="get">
+        <form action="../controlador/controlador_cliente.php" method="get">
             <input type="hidden" name="accion" value="<?php echo htmlspecialchars($tipo); ?>">
             <div class="mb-3">
                 <label for="id_fiscal" class="form-label">ID Fiscal del Cliente</label>
-                <input type="number" class="form-control" id="id_fiscal" name="id_fiscal" required>
+                <input type="text" class="form-control" id="id_fiscal" name="id_fiscal" required>
             </div>
             <div class="d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary btn-sm">
                     <?php
                     switch ($tipo) {
                         case 'actualizar':
-                            echo 'Actualizar';
+                            echo 'Iniciar Actualización';
                             break;
                         case 'eliminar':
                             echo 'Eliminar';

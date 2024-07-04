@@ -36,7 +36,7 @@
                     <a href="vista/alta_cliente.php" class="btn btn-success btn-lg w-100">Crear Nuevo Cliente</a>
                 </div>
                 <div class="col">
-                    <a href="controlador/controlador_cliente.php?accion=formulario&tipo=actualizar" class="btn btn-warning btn-lg w-100">Editar Cliente</a>
+                    <a href="controlador/controlador_cliente.php?accion=formulario&tipo=actualizar" class="btn btn-warning btn-lg w-100">Actualizar Cliente</a>
                 </div>
                 <div class="col">
                     <a href="controlador/controlador_cliente.php?accion=formulario&tipo=eliminar" class="btn btn-danger btn-lg w-100">Eliminar Cliente</a>

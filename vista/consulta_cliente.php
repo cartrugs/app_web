@@ -10,6 +10,11 @@
     <div class="container mt-5">
         <h2 class="text-center">Consultar Cliente</h2>
         <?php if (isset($cliente) && $cliente): ?>
+            <?php if (!$cliente['activo']): ?>
+                <div class="alert alert-warning" role="alert">
+                    ¡Este cliente se encuentra inactivo!
+                </div>
+            <?php endif; ?>
         <form>
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
@@ -62,6 +67,10 @@
             <div class="mb-3">
                 <label for="sitio_web" class="form-label">Sitio Web</label>
                 <input type="text" class="form-control" id="sitio_web" name="sitio_web" value="<?php echo htmlspecialchars($cliente['sitio_web']); ?>" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="activo" class="form-label">Activo</label>
+                <input type="text" class="form-control" id="activo" name="activo" value="<?php echo htmlspecialchars($cliente['activo']); ?>" readonly>
             </div>
             </form>
         <?php else: ?>

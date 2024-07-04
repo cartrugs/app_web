@@ -1,4 +1,5 @@
 <?php
+
 require_once '../config_cliente.php';
 require_once (MODELO_PATH . 'modelo_cliente.php');
 //require_once '../modelo/modelo_cliente.php';
@@ -23,13 +24,13 @@ function mostrar_formulario_alta($errores = [], $datos = []) {
 }
 
 // formulario de edición
-function mostrar_formulario_editar($id_fiscal, $errores = [], $datos = []) {
+function mostrar_formulario_actualizar($id_fiscal, $errores = [], $datos = []) {
     $cliente = obtener_cliente_por_id($id_fiscal);
     require VISTA_PATH . 'actualizar_cliente.php';
     return $cliente;
 }
 
-// Función para mostrar el formulario de consulta de contactos
+// Función para mostrar el formulario de consulta de clientes
 function mostrar_formulario_consulta($id_fiscal) {
     $cliente = obtener_cliente_por_id($id_fiscal);
     require VISTA_PATH . 'consulta_cliente.php';
@@ -42,6 +43,7 @@ function mostrar_formulario_accion($tipo, $error = '') {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    var_dump($_POST);
     $accion = $_POST['accion'] ?? '';
     $errores = [];
     $datos = [];
@@ -53,8 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $datos[$campo] = limpiar_datos($_POST[$campo]);
         }
+        
     }
-
+    
     switch ($accion) {
         case 'crear':
             validar_datos('nombre', 'Nombre', $errores, $datos);
@@ -72,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             validar_datos('sitio_web', 'Sitio Web', $errores, $datos);
 
             if (empty($errores)) {
-                guardar_contacto(
+                guardar_cliente(
                     $datos['nombre'], $datos['apellidos'], $datos['telefono'], 
                     $datos['email'], $datos['id_fiscal'], $datos['domicilio'], 
                     $datos['poblacion'], $datos['codigo_postal'], $datos['provincia'],
@@ -82,7 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../index.php?status=cliente_creado');
                 exit();
             } else {
-                mostrar_formulario_alta($errores, $datos);
+              mostrar_formulario_alta($errores, $datos);
+            
             }
             break;
         
@@ -101,41 +105,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             validar_datos('poblacion_envio', 'Poblacion de Envío', $errores, $datos);
             validar_datos('codigo_postal_envio', 'CP de Envío', $errores, $datos);
             validar_datos('sitio_web', 'Sitio Web', $errores, $datos);
+            
 
             if (empty($errores)) {
                 actualizar_cliente(
-                    $id_contacto,  $datos['nombre'], $datos['apellidos'], $datos['telefono'], 
+                    $datos['nombre'], $datos['apellidos'], $datos['telefono'], 
                     $datos['email'], $datos['id_fiscal'], $datos['domicilio'], 
                     $datos['poblacion'], $datos['codigo_postal'], $datos['provincia'],
                     $datos['direccion_envio'], $datos['poblacion_envio'],
                     $datos['codigo_postal_envio'], $datos['sitio_web']
                 );
                 header("Location: ../index.php?status=cliente_actualizado");
+                echo 'Adios';
                 exit();
+                
             } else {
-                mostrar_formulario_editar($id_fiscal, $errores, $datos);
+                mostrar_formulario_actualizar($id_fiscal, $errores, $datos);
             }
             break;
         
         case 'eliminar':
             $id_fiscal = $_POST['id_fiscal'] ?? null;
-            eliminar_cliente($id_fiscal);
-            header('Location: ../index.php?status=cliente_eliminado');
-            exit();
+            if ($id_fiscal) {
+                eliminar_cliente($id_fiscal);
+                header('Location: ../index.php?status=cliente_eliminado');
+                exit();
+            } else {
+                $error = "ID Fiscal no proporcionado.";
+                mostrar_formulario_accion('eliminar', $error);
+            }
+            break;
     }
+
 } elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
     $accion = $_GET['accion'] ?? '';
     $id_fiscal = $_GET['id_fiscal'] ?? null;
 
     switch ($accion) {
-        case 'editar':
+        case 'actualizar':
             if ($id_fiscal) {
                 $cliente = obtener_cliente_por_id($id_fiscal);
                 if ($cliente) {
-                    mostrar_formulario_editar($id_fiscal);
+                    mostrar_formulario_actualizar($id_fiscal);
                 } else {
                     $error = "Cliente no encontrado.";
-                    mostrar_formulario_accion('editar', $error);
+                    mostrar_formulario_accion('actualizar', $error);
                 }
             }
             break;
@@ -148,6 +162,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     $error = "Cliente no encontrado.";
                     mostrar_formulario_accion('consulta', $error);
+                }
+            }
+            break;
+
+        case 'eliminar':
+            if ($id_fiscal) {
+                $cliente = obtener_cliente_por_id($id_fiscal);
+                if ($cliente) {
+                    eliminar_cliente($id_fiscal);
+                    header('Location: ../index.php?status=cliente_eliminado');
+                    exit();
+                } else {
+                    $error = "Cliente no encontrado.";
+                    mostrar_formulario_accion('eliminar', $error);
                 }
             }
             break;
