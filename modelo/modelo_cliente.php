@@ -2,7 +2,7 @@
 
 <?php
 
-/*require_once  'conexion_cliente.php';*/
+require_once  'conexion_cliente.php';
 
 //limpiar los datos recibidos por formulario
 function limpiar_datos($data) {
