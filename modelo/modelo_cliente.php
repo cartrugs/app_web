@@ -2,7 +2,7 @@
 
 <?php
 
-/*require_once  'conexion_cliente.php';*/
+require_once  'conexion_cliente.php';
 
 //limpiar los datos recibidos por formulario
 function limpiar_datos($data) {
@@ -120,12 +120,12 @@ require_once 'conexion_cliente.php';
 
 
 //limpiar los datos recibidos por formulario
-function limpiar_datos($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+// function limpiar_datos($data) {
+//     $data = trim($data);
+//     $data = stripslashes($data);
+//     $data = htmlspecialchars($data);
+//     return $data;
+// }
 
 // Guardar un nuevo cliente (insertar)
 function guardar_cliente($datos) {

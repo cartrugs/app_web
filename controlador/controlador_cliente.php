@@ -1,8 +1,8 @@
 <?php
-/*
+
 require_once '../config_cliente.php';
 require_once (MODELO_PATH . 'modelo_cliente.php');
-//require_once '../modelo/modelo_cliente.php';*/
+//require_once '../modelo/modelo_cliente.php';
 
 // listar contacto en vista listar_contactos.php
 /*function listar_clientes(){
@@ -199,9 +199,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
-
-require_once '../config_cliente.php';
-require_once MODELO_PATH . 'modelo_cliente.php';
 
 $accion = $_GET['accion'] ?? '';
 
