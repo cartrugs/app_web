@@ -1,8 +1,8 @@
 <?php
-
+/*
 require_once '../config_cliente.php';
 require_once (MODELO_PATH . 'modelo_cliente.php');
-//require_once '../modelo/modelo_cliente.php';
+//require_once '../modelo/modelo_cliente.php';*/
 
 // listar contacto en vista listar_contactos.php
 /*function listar_clientes(){

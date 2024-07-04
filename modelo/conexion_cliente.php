@@ -3,7 +3,7 @@
 
 function conectarBD(){
     $host = 'localhost';
-    $dbname = 'my_app_web_certi';
+    $dbname = 'app_web_certi';
     $username = 'root';
     $password = '';
 
