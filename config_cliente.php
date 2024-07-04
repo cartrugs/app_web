@@ -12,6 +12,6 @@ define('VISTA_PATH', APP_ROOT . '/vista/');
 
 require_once MODELO_PATH. 'conexion_cliente.php';
 
-echo "Config file included successfully!";
+// echo "Config file included successfully!";
 
 ?>
