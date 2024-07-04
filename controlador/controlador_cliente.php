@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $datos['direccion_envio'], $datos['poblacion_envio'],
                     $datos['codigo_postal_envio'], $datos['sitio_web']
                 );
-                header('Location: ../index.php?status=cliente_creado');
+                header('Location: ../vista/confirmacion_cliente.php?accion=crear');
                 exit();
             } else {
               mostrar_formulario_alta($errores, $datos);
@@ -115,8 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $datos['direccion_envio'], $datos['poblacion_envio'],
                     $datos['codigo_postal_envio'], $datos['sitio_web']
                 );
-                header("Location: ../index.php?status=cliente_actualizado");
-                echo 'Adios';
+                header("Location: ../vista/confirmacion_cliente.php?accion=actualizar");
                 exit();
                 
             } else {
@@ -128,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_fiscal = $_POST['id_fiscal'] ?? null;
             if ($id_fiscal) {
                 eliminar_cliente($id_fiscal);
-                header('Location: ../index.php?status=cliente_eliminado');
+                header('Location: ../vista/confirmacion_cliente.php?accion=eliminar');
                 exit();
             } else {
                 $error = "ID Fiscal no proporcionado.";
@@ -171,7 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cliente = obtener_cliente_por_id($id_fiscal);
                 if ($cliente) {
                     eliminar_cliente($id_fiscal);
-                    header('Location: ../index.php?status=cliente_eliminado');
+                    header('Location: ../vista/confirmacion_cliente.php?accion=eliminar');
                     exit();
                 } else {
                     $error = "Cliente no encontrado.";
