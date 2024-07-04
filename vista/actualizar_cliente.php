@@ -66,6 +66,10 @@
                 <label for="sitio_web" class="form-label">Sitio Web</label>
                 <input type="text" class="form-control" id="sitio_web" name="sitio_web" value="<?php echo htmlspecialchars($cliente['sitio_web']); ?>">
             </div>
+            <div class="mb-3">
+                <label for="activo" class="form-label">Activo</label>
+                <input type="number" class="form-control" id="activo" name="activo" value="<?php echo htmlspecialchars($cliente['activo']); ?>">
+            </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
         <?php else: ?>

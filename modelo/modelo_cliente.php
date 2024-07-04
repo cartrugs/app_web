@@ -29,7 +29,7 @@ function obtener_cliente_por_id($id_fiscal) {
 }
 
 //Actualizar el cliente
-function actualizar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web) {
+function actualizar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web, $activo) {
     $nombre = limpiar_datos($nombre);
     $apellidos = limpiar_datos($apellidos);
     $telefono = limpiar_datos($telefono);
@@ -43,9 +43,10 @@ function actualizar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, 
     $poblacion_envio = limpiar_datos($poblacion_envio);
     $codigo_postal_envio = limpiar_datos($codigo_postal_envio);
     $sitio_web = limpiar_datos($sitio_web);
+    $activo = limpiar_datos($activo);
         
     $pdo = conectarBD();
-    $stmt = $pdo->prepare("UPDATE clientes SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono, email = :email, domicilio = :domicilio, poblacion = :poblacion, codigo_postal = :codigo_postal, provincia = :provincia, direccion_envio = :direccion_envio, poblacion_envio = :poblacion_envio, codigo_postal_envio = :codigo_postal_envio, sitio_web = :sitio_web WHERE id_fiscal = :id_fiscal");
+    $stmt = $pdo->prepare("UPDATE clientes SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono, email = :email, domicilio = :domicilio, poblacion = :poblacion, codigo_postal = :codigo_postal, provincia = :provincia, direccion_envio = :direccion_envio, poblacion_envio = :poblacion_envio, codigo_postal_envio = :codigo_postal_envio, sitio_web = :sitio_web, activo = :activo WHERE id_fiscal = :id_fiscal");
     
     $stmt->execute([
         ':nombre' => $nombre, 
@@ -60,7 +61,8 @@ function actualizar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, 
         ':direccion_envio' => $direccion_envio,
         ':poblacion_envio' => $poblacion_envio,
         ':codigo_postal_envio' => $codigo_postal_envio,
-        ':sitio_web' => $sitio_web
+        ':sitio_web' => $sitio_web,
+        ':activo' => $activo
     ]);
 }
 
@@ -74,9 +76,9 @@ function eliminar_cliente($id_fiscal) {
 //Consulta de clientes inactivos (eliminados)
 function obtener_clientes_inactivos() {
     $pdo = conectarBD();
-    $stmt = $pdo->query("SELECT Id_cliente, nombre, apellidos, telefono, email, instagram, tiktok, domicilio, poblacion, provincia, pais FROM clientes WHERE activo = FALSE");
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
+    $stmt = $pdo->query("SELECT Id_cliente, nombre, apellidos, telefono, email, id_fiscal, domicilio, poblacion, codigo_postal, provincia, direccion_envio, poblacion_envio, codigo_postal_envio, sitio_web, activo FROM clientes WHERE activo = FALSE");
+    $clientes= $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $clientes;
 }
 
 

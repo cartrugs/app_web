@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             validar_datos('poblacion_envio', 'Poblacion de Envío', $errores, $datos);
             validar_datos('codigo_postal_envio', 'CP de Envío', $errores, $datos);
             validar_datos('sitio_web', 'Sitio Web', $errores, $datos);
-            
+            validar_datos('activo', 'Activo', $errores, $datos);
 
             if (empty($errores)) {
                 actualizar_cliente(
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $datos['email'], $datos['id_fiscal'], $datos['domicilio'], 
                     $datos['poblacion'], $datos['codigo_postal'], $datos['provincia'],
                     $datos['direccion_envio'], $datos['poblacion_envio'],
-                    $datos['codigo_postal_envio'], $datos['sitio_web']
+                    $datos['codigo_postal_envio'], $datos['sitio_web'], $datos['activo']
                 );
                 header("Location: ../vista/confirmacion_cliente.php?accion=actualizar");
                 exit();
