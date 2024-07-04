@@ -2,7 +2,7 @@
 
 <?php
 
-require_once  'conexion_cliente.php';
+/*require_once  'conexion_cliente.php';*/
 
 //limpiar los datos recibidos por formulario
 function limpiar_datos($data) {
@@ -29,7 +29,7 @@ function obtener_cliente_por_id($id_fiscal) {
 }
 
 //Guardar un nuevo contacto (insertar)
-function guardar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web) {
+/*function guardar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web) {
     $nombre = limpiar_datos($nombre);
     $apellidos = limpiar_datos($apellidos);
     $telefono = limpiar_datos($telefono);
@@ -61,7 +61,7 @@ function guardar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $do
         ':codigo_postal_envio' => $codigo_postal_envio,
         ':sitio_web' => $sitio_web
     ]);
-}
+}*/
 
 //Actualizar el cliente
 function actualizar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web) {

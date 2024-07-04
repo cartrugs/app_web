@@ -1,15 +1,15 @@
 <?php
-
+/*
 require_once '../config_cliente.php';
 require_once (MODELO_PATH . 'modelo_cliente.php');
-//require_once '../modelo/modelo_cliente.php';
+//require_once '../modelo/modelo_cliente.php';*/
 
 // listar contacto en vista listar_contactos.php
-function listar_clientes(){
+/*function listar_clientes(){
     $clientes = obtener_clientes();
     require_once (VISTA_PATH . 'listar_cliente.php');
     return $clientes;
-}
+}*/
 
 // listar contactos inactivos en vista inactivos.php
 function listar_clientes_inactivos() {
@@ -19,9 +19,9 @@ function listar_clientes_inactivos() {
 }
 
 // formulario para nuevas altas
-function mostrar_formulario_alta($errores = [], $datos = []) {
+/*function mostrar_formulario_alta($errores = [], $datos = []) {
     require VISTA_PATH . 'alta_cliente.php';
-}
+}*/
 
 // formulario de edición
 function mostrar_formulario_actualizar($id_fiscal, $errores = [], $datos = []) {
@@ -43,7 +43,6 @@ function mostrar_formulario_accion($tipo, $error = '') {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    var_dump($_POST);
     $accion = $_POST['accion'] ?? '';
     $errores = [];
     $datos = [];
@@ -59,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     switch ($accion) {
-        case 'crear':
+        /*case 'crear':
             validar_datos('nombre', 'Nombre', $errores, $datos);
             validar_datos('apellidos', 'Apellidos', $errores, $datos);
             validar_datos('telefono', 'Teléfono', $errores, $datos);
@@ -88,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               mostrar_formulario_alta($errores, $datos);
             
             }
-            break;
+            break;*/
         
         case 'actualizar':
             $id_fiscal = $_POST['id_fiscal'] ?? null;
@@ -189,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
 
         default:
-            listar_clientes();
+            echo "Acción no indicada";
             break;
     }
 }
