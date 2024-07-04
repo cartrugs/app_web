@@ -28,41 +28,6 @@ function obtener_cliente_por_id($id_fiscal) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-//Guardar un nuevo contacto (insertar)
-/*function guardar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web) {
-    $nombre = limpiar_datos($nombre);
-    $apellidos = limpiar_datos($apellidos);
-    $telefono = limpiar_datos($telefono);
-    $email = limpiar_datos($email);
-    $id_fiscal = limpiar_datos($id_fiscal);
-    $domicilio = limpiar_datos($domicilio);
-    $poblacion = limpiar_datos($poblacion);
-    $codigo_postal = limpiar_datos($codigo_postal);
-    $provincia = limpiar_datos($provincia);
-    $direccion_envio = limpiar_datos($direccion_envio);
-    $poblacion_envio = limpiar_datos($poblacion_envio);
-    $codigo_postal_envio = limpiar_datos($codigo_postal_envio);
-    $sitio_web = limpiar_datos($sitio_web);
-
-    $pdo = conectarBD();
-    $stmt = $pdo->prepare("INSERT INTO clientes (nombre, apellidos, telefono, email, id_fiscal, domicilio, poblacion, codigo_postal, provincia, direccion_envio, poblacion_envio, codigo_postal_envio, sitio_web) VALUES (:nombre, :apellidos, :telefono, :email, :id_fiscal, :domicilio, :poblacion, :provincia, :direccion_envio, :poblacion_envio, :codigo_postal_envio, :sitio_web)");
-    $stmt->execute([
-        ':nombre' => $nombre, 
-        ':apellidos' => $apellidos, 
-        ':telefono' => $telefono, 
-        ':email' => $email, 
-        ':id_fiscal' => $id_fiscal,
-        ':domicilio' => $domicilio, 
-        ':poblacion' => $poblacion, 
-        ':codigo_postal' => $codigo_postal,
-        ':provincia' => $provincia, 
-        ':direccion_envio' => $direccion_envio,
-        ':poblacion_envio' => $poblacion_envio,
-        ':codigo_postal_envio' => $codigo_postal_envio,
-        ':sitio_web' => $sitio_web
-    ]);
-}*/
-
 //Actualizar el cliente
 function actualizar_cliente($nombre, $apellidos, $telefono, $email, $id_fiscal, $domicilio, $poblacion, $codigo_postal, $provincia, $direccion_envio, $poblacion_envio, $codigo_postal_envio, $sitio_web) {
     $nombre = limpiar_datos($nombre);

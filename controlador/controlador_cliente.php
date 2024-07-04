@@ -1,8 +1,7 @@
 <?php
-/*
+
 require_once '../config_cliente.php';
 require_once (MODELO_PATH . 'modelo_cliente.php');
-//require_once '../modelo/modelo_cliente.php';*/
 
 // listar contacto en vista listar_contactos.php
 /*function listar_clientes(){
@@ -17,11 +16,6 @@ function listar_clientes_inactivos() {
     require VISTA_PATH . 'formulario_inactivo_cliente.php';
     return $clientes;
 }
-
-// formulario para nuevas altas
-/*function mostrar_formulario_alta($errores = [], $datos = []) {
-    require VISTA_PATH . 'alta_cliente.php';
-}*/
 
 // formulario de edición
 function mostrar_formulario_actualizar($id_fiscal, $errores = [], $datos = []) {
@@ -58,36 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     switch ($accion) {
-        /*case 'crear':
-            validar_datos('nombre', 'Nombre', $errores, $datos);
-            validar_datos('apellidos', 'Apellidos', $errores, $datos);
-            validar_datos('telefono', 'Teléfono', $errores, $datos);
-            validar_datos('email', 'Email', $errores, $datos);
-            validar_datos('id_fiscal', 'ID Fiscal', $errores, $datos);
-            validar_datos('domicilio', 'Domicilio', $errores, $datos);
-            validar_datos('poblacion', 'Población', $errores, $datos);
-            validar_datos('codigo_postal', 'CP', $errores, $datos);
-            validar_datos('provincia', 'Provincia', $errores, $datos);
-            validar_datos('direccion_envio', 'Dirección de Envío', $errores, $datos);
-            validar_datos('poblacion_envio', 'Poblacion de Envío', $errores, $datos);
-            validar_datos('codigo_postal_envio', 'CP de Envío', $errores, $datos);
-            validar_datos('sitio_web', 'Sitio Web', $errores, $datos);
-
-            if (empty($errores)) {
-                guardar_cliente(
-                    $datos['nombre'], $datos['apellidos'], $datos['telefono'], 
-                    $datos['email'], $datos['id_fiscal'], $datos['domicilio'], 
-                    $datos['poblacion'], $datos['codigo_postal'], $datos['provincia'],
-                    $datos['direccion_envio'], $datos['poblacion_envio'],
-                    $datos['codigo_postal_envio'], $datos['sitio_web']
-                );
-                header('Location: ../vista/confirmacion_cliente.php?accion=crear');
-                exit();
-            } else {
-              mostrar_formulario_alta($errores, $datos);
-            
-            }
-            break;*/
         
         case 'actualizar':
             $id_fiscal = $_POST['id_fiscal'] ?? null;
@@ -192,13 +156,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 }
-?><?php
-
-// Muestra errores, warnings y notices directamente en la página
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-session_start();
 
 $accion = $_GET['accion'] ?? '';
 
