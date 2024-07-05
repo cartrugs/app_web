@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (guardar_cliente($datos)) {
                 $_SESSION['status'] = 'cliente_creado';
             } else {
-                $_SESSION['status'] = 'error_creacion';
+                $_SESSION['status'] = 'cliente_existente';
             }
 
             header('Location: ../vista/alta_cliente.php');

@@ -1,8 +1,18 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
 session_start();
-require_once("../config_cliente.php");
+
+if (isset($_SESSION['status'])) {
+    if ($_SESSION['status'] == 'cliente_creado') {
+        echo '<div class="alert alert-success">Cliente creado con éxito.</div>';
+    } elseif ($_SESSION['status'] == 'cliente_existente') {
+        echo '<div class="alert alert-warning">El cliente ya existe.</div>';
+    } elseif ($_SESSION['status'] == 'error_creacion') {
+        echo '<div class="alert alert-danger">Hubo un error al crear el cliente.</div>';
+    }
+    unset($_SESSION['status']);
+}
 ?>
+
 
 
 <!DOCTYPE html>

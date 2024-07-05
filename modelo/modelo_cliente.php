@@ -81,6 +81,14 @@ function obtener_clientes_inactivos() {
     return $clientes;
 }
 
+// Verificar si un cliente existe por su ID fiscal
+function cliente_existe($id_fiscal) {
+    $pdo = conectarBD();
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM clientes WHERE id_fiscal = :id_fiscal");
+    $stmt->execute([':id_fiscal' => $id_fiscal]);
+    return $stmt->fetchColumn() > 0;
+}
+
 
 // Guardar un nuevo cliente (insertar)
 function guardar_cliente($datos) {
@@ -91,6 +99,10 @@ function guardar_cliente($datos) {
     }
 
     $pdo = conectarBD();
+    // Verificar si el cliente ya existe
+    if (cliente_existe($datos['id_fiscal'])) {
+        return false; // Cliente ya existe
+    }
     $stmt = $pdo->prepare("INSERT INTO clientes (nombre, apellidos, telefono, email, id_fiscal, domicilio, poblacion, codigo_postal, provincia, direccion_envio, poblacion_envio, codigo_postal_envio, sitio_web, activo) VALUES (:nombre, :apellidos, :telefono, :email, :id_fiscal, :domicilio, :poblacion, :codigo_postal, :provincia, :direccion_envio, :poblacion_envio, :codigo_postal_envio, :sitio_web, :activo)");
     
     return $stmt->execute($datos);
