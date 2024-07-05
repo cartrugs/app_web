@@ -21,6 +21,9 @@
                 case 'crear':
                     echo 'Cliente creado con éxito';
                     break;
+                case 'cliente_existente';// se incluye un nuevo case: cliente_existente
+                    echo 'El cliente ya existe';
+                    break;
                 case 'actualizar':
                     echo 'Cliente actualizado con éxito';
                     break;

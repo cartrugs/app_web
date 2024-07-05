@@ -184,13 +184,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
             
             if (guardar_cliente($datos)) {
-                $_SESSION['status'] = 'cliente_creado';
+                //$_SESSION['status'] = 'cliente_creado'; sustituído para ir a confirm
+                header('Location: ../vista/confirmacion_cliente.php?accion=crear');
             } else {
-                $_SESSION['status'] = 'cliente_existente';
+                //$_SESSION['status'] = 'cliente_existente'; sustituído para ir a confirm
+                header('Location: ../vista/confirmacion_cliente.php?accion=cliente_existente');
             }
-
-            header('Location: ../vista/alta_cliente.php');
-            exit();
+            // eliminado
+            //header('Location: ../vista/alta_cliente.php');
+            //exit();
 
         default:
             echo "Acción no válida.";
