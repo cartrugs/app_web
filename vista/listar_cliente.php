@@ -17,7 +17,7 @@
 <body class="bg-body-secondary lead">
     <div class="container mt-1">
         <div class="card mb-1">
-            <h2 class="text-center mt-3 mb-3">Listado de Clientes</h2>
+            <h2 class="text-center mt-3 mb-3"><i class="bi bi-card-checklist"></i> Listado de Clientes</h2>
             <table class="table table-striped-columns text-center">
                 <thead class="table-dark">
                     <tr>
