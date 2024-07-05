@@ -30,8 +30,8 @@
                 <p class="mt-5"><strong>Selecciona tu opción:</strong></p>
             </div>
             <div class="mt-5 row justify-content-center">
-                <div class="col-auto mb-2">
-                    <a href="vista/listar_cliente.php" class="btn btn-primary"><i class="bi bi-card-checklist"></i> Listar</a>
+            <div class="col-auto mb-2">
+                    <a href="controlador/controlador_cliente.php?accion=listar" class="btn btn-primary"><i class="bi bi-card-checklist"></i> Listar</a>
                 </div>
                 <div class="col-auto mb-2">
                     <a href="vista/alta_cliente.php" class="btn btn-success"><i class="bi bi-plus-circle"></i> Alta</a>

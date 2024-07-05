@@ -4,11 +4,11 @@ require_once '../config_cliente.php';
 require_once (MODELO_PATH . 'modelo_cliente.php');
 
 // listar contacto en vista listar_contactos.php
-/*function listar_clientes(){
+function listar_clientes(){
     $clientes = obtener_clientes();
     require_once (VISTA_PATH . 'listar_cliente.php');
     return $clientes;
-}*/
+}
 
 // listar contactos inactivos en vista inactivos.php
 function listar_clientes_inactivos() {
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             validar_datos('poblacion_envio', 'Poblacion de Envío', $errores, $datos);
             validar_datos('codigo_postal_envio', 'CP de Envío', $errores, $datos);
             validar_datos('sitio_web', 'Sitio Web', $errores, $datos);
-            
+            validar_datos('activo', 'Activo', $errores, $datos);
 
             if (empty($errores)) {
                 actualizar_cliente(
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $datos['email'], $datos['id_fiscal'], $datos['domicilio'], 
                     $datos['poblacion'], $datos['codigo_postal'], $datos['provincia'],
                     $datos['direccion_envio'], $datos['poblacion_envio'],
-                    $datos['codigo_postal_envio'], $datos['sitio_web']
+                    $datos['codigo_postal_envio'], $datos['sitio_web'], $datos['activo']
                 );
                 header("Location: ../vista/confirmacion_cliente.php?accion=actualizar");
                 exit();
@@ -151,6 +151,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mostrar_formulario_accion($tipo);
             break;
 
+        case 'listar':
+            listar_clientes();
+            break;
+            
         default:
             echo "Acción no indicada";
             break;
