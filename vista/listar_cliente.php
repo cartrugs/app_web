@@ -56,7 +56,7 @@
                 </tbody>
             </table>
             <div class="text-center mt-5">
-                <a href="index.php" class="btn btn-primary mb-3"><i class="bi bi-box-arrow-in-left"></i> Inicio</a>
+                <a href="http://localhost/app_web_cliente/index.php" class="btn btn-primary mb-3"><i class="bi bi-box-arrow-in-left"></i> Inicio</a>
             </div>
         </div>
     </div>
